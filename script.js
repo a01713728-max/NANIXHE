@@ -208,7 +208,7 @@ function sendOrderWhatsApp() {
   const finalMessage = text + "\n\n_Hola, envío el detalle de mi pedido. Quedo en espera de confirmación._";
   
   const encodedText = encodeURIComponent(finalMessage);
-  window.open(`https://wa.me/5215624718830?text=${encodedText}`, '_blank');
+  window.open(`https://wa.me/525518155509?text=${encodedText}`, '_blank');
   
   closeConfirmModal();
   toggleCart();

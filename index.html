@@ -15,7 +15,7 @@
 </head>
 <body>
 
-  <div class="bg-pattern" style="background-image: url('assets/decor/maiz.png');"></div>
+  <div class="bg-pattern" style="background-image: url('maiz.jpg');"></div>
 
   <nav>
     <div class="nav-logo">Nani<span>xhe</span></div>
@@ -35,7 +35,7 @@
     <span id="cart-count-badge">0</span>
   </button>
 
-  <section class="hero" style="background-image: linear-gradient(rgba(78, 110, 88, 0.85), rgba(90, 70, 52, 0.85)), url('assets/decor/hero-cocina.jpg');">
+  <section class="hero" style="background-image: linear-gradient(rgba(78, 110, 88, 0.85), rgba(90, 70, 52, 0.85)), url('hero-cocina.jpg');">
     <div class="hero-content reveal">
       <div class="status-badge open-badge">Abierto Ahora • 9:00 AM - 9:00 PM</div>
       <p class="hero-eyebrow">Cocina Oaxaqueña Tradicional</p>
@@ -49,11 +49,11 @@
     </div>
   </section>
 
-  <div class="section-transition" style="background-image: url('assets/decor/comal.jpg');"></div>
+  <div class="section-transition" style="background-image: url('comal.jpg');"></div>
 
   <section id="nosotros">
-    <img src="assets/decor/chiles-secos.png" alt="" class="decor-corner decor-top-right" aria-hidden="true">
-    <img src="assets/decor/molcajete.png" alt="" class="decor-corner decor-bottom-left" aria-hidden="true">
+    <img src="chiles-secos.jpg" alt="" class="decor-corner decor-top-right" aria-hidden="true">
+    <img src="molcajete.jpg" alt="" class="decor-corner decor-bottom-left" aria-hidden="true">
 
     <div class="nosotros-grid reveal">
       <div>
@@ -76,9 +76,9 @@
     </div>
   </section>
 
-  <div class="talavera-divider" style="background-image: url('assets/decor/talavera-pattern.png');"></div>
+  <div class="talavera-divider"></div>
 
-  <div class="ingredient-banner" style="background-image: url('assets/decor/ingredientes.jpg');"></div>
+  <div class="ingredient-banner" style="background-image: url('ingredientes.jpg');"></div>
 
   <section id="menu">
     <div class="menu-header reveal">
@@ -293,7 +293,7 @@
       </div>
     </div></section>
 
-  <div class="talavera-divider" style="background-image: url('assets/decor/talavera-pattern.png');"></div>
+  <div class="talavera-divider"></div>
 
   
 
@@ -317,7 +317,7 @@
     <span class="contact-number"><a href="tel:+55 18 15 55 09">+55 18 15 55 09</a></span>
   </section>
 
-  <footer style="background-image: linear-gradient(rgba(90, 70, 52, 0.95), rgba(90, 70, 52, 0.95)), url('assets/decor/mantel-pattern.png');">
+  <footer style="background-image: linear-gradient(rgba(90, 70, 52, 0.95), rgba(90, 70, 52, 0.95));">
     <div class="footer-content">
       <div class="nav-logo" style="color: var(--crema); margin-bottom: 16px;">Nani<span style="color: var(--mostaza);">xthe</span></div>
       <p>Cocina Oaxaqueña Tradicional</p>
@@ -330,8 +330,6 @@
 
   <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
   <div class="cart-drawer" id="cartDrawer">
-    
-    <img src="assets/decor/cazuela.png" alt="" class="decor-cart" aria-hidden="true">
 
     <div class="cart-header">
       <h3>Tu Pedido</h3>
@@ -361,7 +359,7 @@
 
       <div class="checkout-form" id="checkoutForm" style="display:none;">
         <hr>
-        <h4><img src="assets/decor/cuchara-madera.png" alt="" style="height: 16px; margin-right: 8px; vertical-align: middle;">Datos de Entrega</h4>
+        <h4>Datos de Entrega</h4>
         
         <label>Método de entrega:</label>
         <select id="deliveryMethod" onchange="updateShipping()">
