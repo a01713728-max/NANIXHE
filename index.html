@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nanixhe — Cocina Oaxaqueña</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="bg-pattern" style="background-image: url('assets/decor/maiz.png');"></div>
+
+  <nav>
+    <div class="nav-logo">Nani<span>xhe</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#menu">Menú</a></li>
+      <li><a href="#pago">Pago</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <button class="cart-floating-btn" onclick="toggleCart()">
+    <i class="ph ph-shopping-cart"></i>
+    <span id="cart-count-badge">0</span>
+  </button>
+
+  <section class="hero" style="background-image: linear-gradient(rgba(78, 110, 88, 0.85), rgba(90, 70, 52, 0.85)), url('assets/decor/hero-cocina.jpg');">
+    <div class="hero-content reveal">
+      <div class="status-badge open-badge">Abierto Ahora • 9:00 AM - 6:00 PM</div>
+      <p class="hero-eyebrow">Cocina Oaxaqueña Tradicional</p>
+      <h1>Nanixthe</h1>
+      <p class="hero-sub">Del zapoteco: sabroso, rico, delicioso, exquisito.</p>
+      <p>Sabores auténticos que viajan directo desde Oaxaca hasta tu mesa. Cada platillo es una tradición que se come, una historia que se comparte.</p>
+      <div class="hero-buttons">
+        <a href="#menu" class="btn">Ver el menú</a>
+        <a href="#pago" class="btn btn-outline">Datos de Pago</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-transition" style="background-image: url('assets/decor/comal.jpg');"></div>
+
+  <section id="nosotros">
+    <img src="assets/decor/chiles-secos.png" alt="" class="decor-corner decor-top-right" aria-hidden="true">
+    <img src="assets/decor/molcajete.png" alt="" class="decor-corner decor-bottom-left" aria-hidden="true">
+
+    <div class="nosotros-grid reveal">
+      <div>
+        <p class="section-label">Quiénes Somos</p>
+        <h2 class="section-title">Un pedacito de Oaxaca en cada bocado</h2>
+        <p class="section-body">
+          En Nanixthe llevamos la cocina oaxaqueña con orgullo y devoción. Nuestro nombre viene del zapoteco y significa exactamente lo que queremos que sientas cuando pruebes nuestros antojitos: algo sabroso, rico, delicioso, exquisito.
+          <br><br>
+          Preparamos cada platillo con ingredientes seleccionados y recetas que han pasado de generación en generación: el mole negro que tarda horas, el quesillo que se hace a mano, el tasajo que concentra el sabor de la tierra. Aquí cada orden es un ritual.
+        </p>
+        <div class="trust-indicators">
+          <div class="trust-item"><i class="ph ph-plant"></i> <span>Ingredientes frescos todos los días</span></div>
+          <div class="trust-item"><i class="ph ph-cooking-pot"></i> <span>Comida 100% casera</span></div>
+          <div class="trust-item"><i class="ph ph-lock-key"></i> <span>Pago seguro por transferencia</span></div>
+          <div class="trust-item"><i class="ph ph-whatsapp-logo"></i> <span>Atención personalizada</span></div>
+        </div>
+      </div>
+      <img src="Tlayudas.jpg" alt="Tlayuda oaxaqueña" class="nosotros-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+      <div class="menu-item-img-placeholder" style="display:none;"><i class="ph ph-image"></i></div>
+    </div>
+  </section>
+
+  <div class="talavera-divider" style="background-image: url('assets/decor/talavera-pattern.png');"></div>
+
+  <div class="ingredient-banner" style="background-image: url('assets/decor/ingredientes.jpg');"></div>
+
+  <section id="menu">
+    <div class="menu-header reveal">
+      <div>
+        <p class="section-label">Lo que hacemos</p>
+        <h2 class="section-title">Antojitos & Bebidas</h2>
+        <p class="menu-intro">Todo elaborado con ingredientes frescos y el cariño de la cocina oaxaqueña de siempre.</p>
+      </div>
+      
+      <div class="menu-controls">
+        <div class="search-wrapper">
+          <i class="ph ph-magnifying-glass search-icon"></i>
+          <input type="text" id="searchInput" placeholder="Buscar platillo..." onkeyup="filterMenu()">
+        </div>
+        <div class="filters">
+          <button class="filter-btn active" onclick="filterCategory('all')">Todos</button>
+          <button class="filter-btn" onclick="filterCategory('antojitos')">Antojitos</button>
+          <button class="filter-btn" onclick="filterCategory('bebidas')">Bebidas</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-cat reveal" data-category="antojitos">
+      <h3 class="menu-cat-title"><i class="ph ph-bowl-food"></i> Antojitos</h3>
+      <div class="items-grid" id="grid-antojitos">
+
+        <div class="menu-item" data-id="1" data-name="Tlayuda Grande" data-price="170">
+          <img src="Tlayudas.jpg" alt="Tlayuda Grande" class="menu-item-img" onerror="this.outerHTML='<div class=\'menu-item-img-placeholder\'><i class=\'ph ph-image\'></i></div>'">
+          <div class="menu-item-body">
+            <p class="menu-item-name">Tlayuda Grande <small>28 cm</small></p>
+            <p class="menu-item-desc">Nuestra tlayuda en su versión grande, crujiente y generosa.</p>
+            <div class="menu-item-footer">
+              <p class="menu-item-price">$170</p>
+              <button class="btn btn-add" onclick="addToCart(1)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-id="2" data-name="Tlayuda Chica" data-price="110">
+          <img src="Tlayudas.jpg" alt="Tlayuda Chica" class="menu-item-img" onerror="this.outerHTML='<div class=\'menu-item-img-placeholder\'><i class=\'ph ph-image\'></i></div>'">
+          <div class="menu-item-body">
+            <p class="menu-item-name">Tlayuda Chica <small>22 cm</small></p>
+            <p class="menu-item-desc">Frijoles, tasajo, chorizo, repollo, aguacate y el tradicional quesillo.</p>
+            <div class="menu-item-footer">
+              <p class="menu-item-price">$110</p>
+              <button class="btn btn-add" onclick="addToCart(2)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-id="3" data-name="Enmoladas" data-price="110">
+          <img src="Enmoladas.jpg" alt="Enmoladas" class="menu-item-img" onerror="this.outerHTML='<div class=\'menu-item-img-placeholder\'><i class=\'ph ph-image\'></i></div>'">
+          <div class="menu-item-body">
+            <p class="menu-item-name">Enmoladas</p>
+            <p class="menu-item-desc">Mole Negro de Oaxaca, pollo, crema, cebolla y queso cotija. Incluye arroz.</p>
+            <div class="menu-item-footer">
+              <p class="menu-item-price">$110</p>
+              <button class="btn btn-add" onclick="addToCart(3)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-id="4" data-name="Tamal Oaxaqueño" data-price="40">
+          <img src="Tamal Oaxaqueño.jpg" alt="Tamal Oaxaqueño" class="menu-item-img" onerror="this.outerHTML='<div class=\'menu-item-img-placeholder\'><i class=\'ph ph-image\'></i></div>'">
+          <div class="menu-item-body">
+            <p class="menu-item-name">Tamal Oaxaqueño</p>
+            <p class="menu-item-desc">De Mole, Chile Morita o Chile Guajillo — elige tu favorito.</p>
+            <div class="menu-item-footer">
+              <p class="menu-item-price">$40</p>
+              <button class="btn btn-add" onclick="addToCart(4)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-id="5" data-name="Pollo con Mole Negro" data-price="110">
+          <img src="Pollo con mole negro.jpg" alt="Pollo con Mole Negro" class="menu-item-img" onerror="this.outerHTML='<div class=\'menu-item-img-placeholder\'><i class=\'ph ph-image\'></i></div>'">
+          <div class="menu-item-body">
+            <p class="menu-item-name">Pollo con Mole Negro</p>
+            <p class="menu-item-desc">El clásico de Oaxaca. Incluye arroz y tortillas hechas a mano.</p>
+            <div class="menu-item-footer">
+              <p class="menu-item-price">$110</p>
+              <button class="btn btn-add" onclick="addToCart(5)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-id="6" data-name="Empanadas Oaxaqueñas" data-price="80">
+          <img src="Empanadas Oaxaqueñas.jpg" alt="Empanadas Oaxaqueñas" class="menu-item-img" onerror="this.outerHTML='<div class=\'menu-item-img-placeholder\'><i class=\'ph ph-image\'></i></div>'">
+          <div class="menu-item-body">
+            <p class="menu-item-name">Empanadas Oaxaqueñas</p>
+            <p class="menu-item-desc">Rellenas de pollo o queso, con lechuga, crema y queso cotija.</p>
+            <div class="menu-item-footer">
+              <p class="menu-item-price">$80</p>
+              <button class="btn btn-add" onclick="addToCart(6)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-id="7" data-name="Chilaquiles de Mole Negro" data-price="110">
+          <img src="Chilaquiles de mole negro.jpg" alt="Chilaquiles de Mole Negro" class="menu-item-img" onerror="this.outerHTML='<div class=\'menu-item-img-placeholder\'><i class=\'ph ph-image\'></i></div>'">
+          <div class="menu-item-body">
+            <p class="menu-item-name">Chilaquiles de Mole Negro</p>
+            <p class="menu-item-desc">Pollo, lechuga, cebolla, crema y queso cotija.</p>
+            <div class="menu-item-footer">
+              <p class="menu-item-price">$110</p>
+              <button class="btn btn-add" onclick="addToCart(7)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-id="8" data-name="Chilaquiles Verdes con Pollo" data-price="110">
+          <img src="Chilaquiles verdes con pollo.jpg" alt="Chilaquiles Verdes" class="menu-item-img" onerror="this.outerHTML='<div class=\'menu-item-img-placeholder\'><i class=\'ph ph-image\'></i></div>'">
+          <div class="menu-item-body">
+            <p class="menu-item-name">Chilaquiles Verdes con Pollo</p>
+            <p class="menu-item-desc">Crema, cebolla, aguacate y queso cotija. Frescos y reconfortantes.</p>
+            <div class="menu-item-footer">
+              <p class="menu-item-price">$110</p>
+              <button class="btn btn-add" onclick="addToCart(8)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-id="9" data-name="Chilaquiles con Tasajo" data-price="145">
+          <img src="Chilaquiles con Tasajo.jpg" alt="Chilaquiles con Tasajo" class="menu-item-img" onerror="this.outerHTML='<div class=\'menu-item-img-placeholder\'><i class=\'ph ph-image\'></i></div>'">
+          <div class="menu-item-body">
+            <p class="menu-item-name">Chilaquiles con Tasajo</p>
+            <p class="menu-item-desc">Nuestros tradicionales chilaquiles (verdes / rojos / mole) con Tasajo.</p>
+            <div class="menu-item-footer">
+              <p class="menu-item-price">$145</p>
+              <button class="btn btn-add" onclick="addToCart(9)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-id="10" data-name="Enchiladas Verdes de Pollo" data-price="110">
+          <img src="Enchiladas verdes de pollo.jpg" alt="Enchiladas Verdes" class="menu-item-img" onerror="this.outerHTML='<div class=\'menu-item-img-placeholder\'><i class=\'ph ph-image\'></i></div>'">
+          <div class="menu-item-body">
+            <p class="menu-item-name">Enchiladas Verdes de Pollo</p>
+            <p class="menu-item-desc">Con lechuga, cebolla, crema y queso cotija.</p>
+            <div class="menu-item-footer">
+              <p class="menu-item-price">$110</p>
+              <button class="btn btn-add" onclick="addToCart(10)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-id="11" data-name="Plátanos Fritos" data-price="55">
+          <img src="Plátanos fritos.jpg" alt="Plátanos Fritos" class="menu-item-img" onerror="this.outerHTML='<div class=\'menu-item-img-placeholder\'><i class=\'ph ph-image\'></i></div>'">
+          <div class="menu-item-body">
+            <p class="menu-item-name">Plátanos Fritos</p>
+            <p class="menu-item-desc">Con crema o con leche condensada. El antojo dulce perfecto.</p>
+            <div class="menu-item-footer">
+              <p class="menu-item-price">$55</p>
+              <button class="btn btn-add" onclick="addToCart(11)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><div class="menu-cat reveal" data-category="bebidas">
+      <h3 class="menu-cat-title"><i class="ph ph-coffee"></i> Bebidas</h3>
+      <div class="items-grid" id="grid-bebidas">
+
+        <div class="menu-item" data-id="12" data-name="Café de Olla" data-price="30">
+          <img src="Café de olla.jpg" alt="Café de Olla" class="menu-item-img" onerror="this.outerHTML='<div class=\'menu-item-img-placeholder\'><i class=\'ph ph-image\'></i></div>'">
+          <div class="menu-item-body">
+            <p class="menu-item-name">Café de Olla</p>
+            <p class="menu-item-desc">El clásico para empezar el día con buen pie.</p>
+            <div class="menu-item-footer">
+              <p class="menu-item-price">$30</p>
+              <button class="btn btn-add" onclick="addToCart(12)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-id="13" data-name="Champurrado" data-price="35">
+          <img src="Champurrado.jpg" alt="Champurrado" class="menu-item-img" onerror="this.outerHTML='<div class=\'menu-item-img-placeholder\'><i class=\'ph ph-image\'></i></div>'">
+          <div class="menu-item-body">
+            <p class="menu-item-name">Champurrado</p>
+            <p class="menu-item-desc">Espeso, caliente y reconfortante. El abrazo en taza.</p>
+            <div class="menu-item-footer">
+              <p class="menu-item-price">$35</p>
+              <button class="btn btn-add" onclick="addToCart(13)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-id="14" data-name="Agua Fresca 1L" data-price="35">
+          <img src="Aguas.jpg" alt="Agua Fresca" class="menu-item-img" onerror="this.outerHTML='<div class=\'menu-item-img-placeholder\'><i class=\'ph ph-image\'></i></div>'">
+          <div class="menu-item-body">
+            <p class="menu-item-name">Agua Fresca</p>
+            <p class="menu-item-desc">1 litro — Refrescante y natural.</p>
+            <div class="menu-item-footer">
+              <p class="menu-item-price">$35</p>
+              <button class="btn btn-add" onclick="addToCart(14)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-id="15" data-name="Refresco" data-price="30">
+          <img src="Refrescos.jpg" alt="Refresco" class="menu-item-img" onerror="this.outerHTML='<div class=\'menu-item-img-placeholder\'><i class=\'ph ph-image\'></i></div>'">
+          <div class="menu-item-body">
+            <p class="menu-item-name">Refresco</p>
+            <p class="menu-item-desc">Variedad de sabores para acompañar tu antojito.</p>
+            <div class="menu-item-footer">
+              <p class="menu-item-price">$30</p>
+              <button class="btn btn-add" onclick="addToCart(15)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div></section>
+
+  <div class="talavera-divider" style="background-image: url('assets/decor/talavera-pattern.png');"></div>
+
+  
+
+      <div class="pago-card pago-bbva">
+        <i class="ph ph-device-mobile bbva-logo"></i>
+        <p style="color:var(--cafe); font-size:1rem; margin-bottom:12px;">¿Dudas con tu pago?</p>
+        <p class="pago-num" id="tel-banco">+52 1 56 2471 8830</p>
+        <button class="btn-copy" style="margin-bottom: 24px;" onclick="copyToClipboard('tel-banco')"><i class="ph ph-copy"></i> Copiar Número</button>
+        <a href="https://wa.me/5518155509" target="_blank" class="btn btn-outline" style="font-size:.9rem; width:100%; display: flex; justify-content: center; align-items: center; gap: 8px;">
+          <i class="ph ph-whatsapp-logo"></i> Soporte WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contacto">
+    <p class="section-label">¿Listo el antojo?</p>
+    <h2 class="section-title">Comunícate con nosotros</h2>
+    <p>Pedidos por WhatsApp, transferencia sencilla y entrega con cariño. Así de fácil es comer rico con Nanixthe.</p>
+    <span class="contact-number"><a href="tel:+55 18 15 55 09">+55 18 15 55 09</a></span>
+  </section>
+
+  <footer style="background-image: linear-gradient(rgba(90, 70, 52, 0.95), rgba(90, 70, 52, 0.95)), url('assets/decor/mantel-pattern.png');">
+    <div class="footer-content">
+      <div class="nav-logo" style="color: var(--crema); margin-bottom: 16px;">Nani<span style="color: var(--mostaza);">xthe</span></div>
+      <p>Cocina Oaxaqueña Tradicional</p>
+      <p>Del zapoteco: sabroso, rico, delicioso, exquisito.</p>
+      <div class="footer-links" style="margin-top:24px;">
+        <a href="tel:+55 18 15 55 09"><i class="ph ph-phone"></i> +52 1 56 2471 8830</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    
+    <img src="assets/decor/cazuela.png" alt="" class="decor-cart" aria-hidden="true">
+
+    <div class="cart-header">
+      <h3>Tu Pedido</h3>
+      <button class="close-cart" onclick="toggleCart()"><i class="ph ph-x"></i></button>
+    </div>
+    
+    <div class="cart-status" id="cartStatus"><i class="ph ph-shopping-cart"></i> Carrito vacío</div>
+
+    <div class="cart-items" id="cartItemsContainer">
+      </div>
+
+    <div class="cart-footer">
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">$0.00</span>
+        </div>
+        <div class="summary-row" id="shippingRow" style="display:none;">
+          <span>Envío</span>
+          <span id="cartShipping">$35.00</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total Final</span>
+          <span id="cartTotal">$0.00</span>
+        </div>
+      </div>
+
+      <div class="checkout-form" id="checkoutForm" style="display:none;">
+        <hr>
+        <h4><img src="assets/decor/cuchara-madera.png" alt="" style="height: 16px; margin-right: 8px; vertical-align: middle;">Datos de Entrega</h4>
+        
+        <label>Método de entrega:</label>
+        <select id="deliveryMethod" onchange="updateShipping()">
+          <option value="pickup">Recoger en local</option>
+          <option value="delivery">Envío a domicilio (+$35)</option>
+        </select>
+
+        <input type="text" id="clientName" placeholder="Tu Nombre" required>
+        <input type="tel" id="clientPhone" placeholder="Tu Teléfono" required>
+        
+        <div id="addressGroup" style="display:none;">
+          <input type="text" id="clientAddress" placeholder="Dirección completa">
+          <input type="text" id="clientRef" placeholder="Referencias (Ej. Portón blanco)">
+        </div>
+
+        <label>Método de pago:</label>
+        <select id="paymentMethod">
+          <option value="transferencia">Transferencia (Enviar comprobante)</option>
+          <option value="efectivo">Efectivo al recibir/recoger</option>
+        </select>
+      </div>
+
+      <button class="btn btn-checkout" id="btnCheckout" onclick="openConfirmModal()" disabled>Continuar Pedido</button>
+      <button class="btn-empty-cart" onclick="emptyCart()"><i class="ph ph-trash"></i> Vaciar Carrito</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="confirmModal">
+    <div class="modal-content">
+      <h3>Confirma tu pedido</h3>
+      <p style="font-size: 0.9rem; margin-bottom: 15px; color: var(--cafe);">Revisa que todo esté correcto antes de enviar tu mensaje.</p>
+      <div class="modal-summary" id="modalSummaryText"></div>
+      <div style="margin-top: 24px; display: flex; gap: 16px;">
+        <button class="btn" style="flex: 1; display: flex; justify-content: center; align-items: center; gap: 8px;" onclick="sendOrderWhatsApp()"><i class="ph ph-paper-plane-tilt"></i> Confirmar</button>
+        <button class="btn btn-outline" style="flex: 1;" onclick="closeConfirmModal()">Volver</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
